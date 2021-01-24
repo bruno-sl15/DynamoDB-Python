@@ -1,27 +1,26 @@
 import boto3
 
-
 def criar_tabela_filmes():
     dynamodb = boto3.resource('dynamodb')
     tabela = dynamodb.create_table(
         TableName='Filmes',
         KeySchema=[
             {
-                'AttributeName': 'Titulo',
+                'AttributeName': 'titulo',
                 'KeyType': 'HASH'  # Chave de Partição
             },
             {
-                'AttributeName': 'Ano',
+                'AttributeName': 'ano',
                 'KeyType': 'RANGE'  # Chave de Classificação
             }
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': 'Titulo',
+                'AttributeName': 'titulo',
                 'AttributeType': 'S'  # String
             },
             {
-                'AttributeName': 'Ano',
+                'AttributeName': 'ano',
                 'AttributeType': 'N'  # Number
             },
         ],
@@ -31,7 +30,6 @@ def criar_tabela_filmes():
         }
     )
     return tabela
-
 
 tabela_filmes = criar_tabela_filmes()
 print('Status da tabela:', tabela_filmes.table_status)

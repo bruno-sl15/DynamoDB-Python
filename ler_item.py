@@ -1,18 +1,16 @@
 from pprint import pprint
 import boto3
 
-
 def ler_filme(titulo, ano):
     dynamodb = boto3.resource('dynamodb')
     tabela = dynamodb.Table('Filmes')
     resposta = tabela.get_item(
         Key={
-            'Titulo': titulo,
-            'Ano': ano
+            'titulo': titulo,
+            'ano': ano
         }
     )
     return resposta
-
 
 filme = ler_filme('Bacurau', 2019)
 if 'Item' in filme:
