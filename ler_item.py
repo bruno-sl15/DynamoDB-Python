@@ -12,7 +12,7 @@ def ler_filme(titulo, ano):
     )
     return resposta
 
-filme = ler_filme('Clube da Luta', 1999)
+filme = ler_filme('Parasita', 2019)
 if 'Item' in filme:
     print("Filme encontrado:")
     pprint(filme['Item'])
